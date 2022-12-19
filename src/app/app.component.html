@@ -1,0 +1,32 @@
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+
+<h1>Form</h1>
+<form [formGroup]="form">
+  <div>
+    <label>First Name</label>
+    <input formControlName="firstName" />
+  </div>
+
+  <div formArrayName="middleNames">
+    <button (click)="addMiddlename()">Add Middlename</button>
+
+    <div *ngFor="let middlename of middleNameControls; let i = index" >
+      <label>Middle Name {{ i }}</label>
+      <input [formControlName]="i" /><button (click)="removeMiddlename(i)">Delete</button>
+    </div>
+  </div>
+
+  <div>
+    <label>Last Name</label>
+    <input formControlName="lastName" />
+  </div>
+
+  <button type="submit" (click)="submit()">Submit</button>
+</form>
+
+<div>
+  <pre>{{ formValue | json}}</pre>
+</div>
